@@ -57,25 +57,25 @@ const initRunner = () => {
           modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_STATUS_COMPLETED')}</div>`;
 
           if (output.data.duration > 0) {
-            modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_DURATION').replace('%s', output.data.duration.toFixed(2))}</div>`;
+            modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_RUN_TASK_DURATION').replace('%s', output.data.duration.toFixed(2))}</div>`;
           }
 
           if (output.data.output) {
             const result = Joomla.sanitizeHtml((output.data.output), null, sanitiseTaskOutput);
 
             // Can use an indication for non-0 exit codes
-            modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_OUTPUT').replace('%s', result)}</div>`;
+            modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_RUN_TASK_OUTPUT').replace('%s', result)}</div>`;
           }
         } else {
-          modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_STATUS_TERMINATED')}</div>`;
-          modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_OUTPUT').replace('%s', Joomla.Text._('JLIB_JS_AJAX_ERROR_OTHER').replace('%s', xhr.status))}</div>`;
+          modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_RUN_TASK_STATUS_TERMINATED')}</div>`;
+          modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_RUN_TASK_OUTPUT').replace('%s', Joomla.Text._('JLIB_JS_AJAX_ERROR_OTHER').replace('%s', xhr.status))}</div>`;
         }
       },
       onError: (xhr) => {
-        modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_STATUS_TERMINATED')}</div>`;
+        modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_RUN_TASK_STATUS_TERMINATED')}</div>`;
 
         const msg = Joomla.ajaxErrorsMessages(xhr);
-        modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_TEST_RUN_OUTPUT').replace('%s', msg.error)}</div>`;
+        modal.querySelector('.modal-body > div').innerHTML += `<div>${Joomla.Text._('COM_SCHEDULER_RUN_TASK_OUTPUT').replace('%s', msg.error)}</div>`;
       },
     });
   };
